@@ -60,23 +60,28 @@ public class signUpPage extends SetUp.base {
         driver.findElement(usersOption).click();}
     @And("user clicks the add user button")
     public void userClicksTheAddUserButton() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(20000);
         wait.until(ExpectedConditions.elementToBeClickable(addUserBtn));
-        driver.findElement(addUserBtn).click();}
+        driver.findElement(addUserBtn).click();
+        }
     @Then("System displays the add user modal")
     public void systemDisplaysTheAddUserModal() throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOfElementLocated(addUser1stPage));
         Assert.assertTrue(driver.findElement(addUser1stPage).isDisplayed());
-        Thread.sleep(5000);}
+        Thread.sleep(5000);
+    }
     @When("User provides site and role details as specified below")
     public void userProvidesSiteAndRoleDetailsAsSpecifiedBelow(DataTable usrdtlOne) throws InterruptedException {
 //        Convert DataTable to List of Maps
         Map<String, String> userDetails1stPg = usrdtlOne.asMap(String.class, String.class);
 //        Select Center
+        Thread.sleep(5000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(selectCenter));
         Select center = new Select(driver.findElement(selectCenter));
         center.selectByVisibleText(userDetails1stPg.get("Center"));
-        Thread.sleep(5000);
+
 //        Select Designation
+        wait.until(ExpectedConditions.visibilityOfElementLocated(selectDesignation));
         Select designation = new Select(driver.findElement(selectDesignation));
         designation.selectByVisibleText(userDetails1stPg.get("Designation"));
         Thread.sleep(5000);
@@ -105,8 +110,8 @@ public class signUpPage extends SetUp.base {
         wait.until(ExpectedConditions.visibilityOfElementLocated(lastName));
         driver.findElement(lastName).sendKeys(dtls.get("lastName"));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
-        driver.findElement(userName).sendKeys(dtls.get("userName"));
+      /*  wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
+        driver.findElement(userName).sendKeys(dtls.get("userName"));*/
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(title));
         driver.findElement(title).sendKeys(dtls.get("title"));

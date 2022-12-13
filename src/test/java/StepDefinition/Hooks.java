@@ -23,9 +23,9 @@ public class Hooks extends SetUp.base {
 //            driver.get("chrome://settings/clearBrowserData");
 //            driver.findElement(By.xpath("//settings-ui")).sendKeys(Keys.ENTER);
 //            driver.navigate().refresh();
-        fromLoginPage.theUserNavigatesToTheProfileIcon();
-        fromLoginPage.userClicksTheLogoutButton();
-        fromLoginPage.userIsLoggedOutSuccessfully();
+       // fromLoginPage.theUserNavigatesToTheProfileIcon();
+       // fromLoginPage.userClicksTheLogoutButton();
+       // fromLoginPage.userIsLoggedOutSuccessfully();
 
 
     }
