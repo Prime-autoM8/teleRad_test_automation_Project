@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
         glue = "",
         plugin = {"pretty", "html:target/cucumber-reports.html",
         },
+        tags = "@TE0010" +
+                "",
         monochrome = true
 )
 public class moTestRunner {

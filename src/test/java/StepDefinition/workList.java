@@ -36,9 +36,9 @@ public class workList extends SetUp.base {
     By workListOption = By.xpath("//div[contains(text(),'Worklist') and @class='Sidebar__menu__item__text']");
     By workListPageTitle = By.xpath("//div[contains(text(),'Worklist') and @class='TopNavigation--header_title']");
     By assignees = By.xpath("//*[@class='chakra-menu__group']/button/span[2]/div/p");
-    By radiographerOption = By.xpath("//div[@id='root']/div/div/main/div/div/div[2]/table/tbody/tr[1]/td[4]/button");
-    By studyMenuOption = By.xpath("//tbody/tr[1]/td[5]/button");
-    By viewStudyoption = By.xpath("//tbody/tr[1]/td[5]/div/div/div/a/button/p[contains(text(),'View Study')]");
+    By radiographerOption = By.xpath("//div[@id='root']/div/div/main/div/div/div[2]/table/tbody/tr[1]/td[11]/button");
+    By studyMenuOption = By.xpath("//button[@data-cy='actionButton']");
+    By viewStudyoption = By.xpath("//p[@class='chakra-text css-zdr7gl']");
     By clinicalHistoryTitle = By.xpath("//p[contains(text(),'Clinical history')]");
     By CPTtitle = By.xpath("//div/div[1]/p[contains(text(),'CPT codes')]");
     By editButton = By.xpath("//button[contains(text(),'Edit Study')]");
@@ -58,6 +58,14 @@ public class workList extends SetUp.base {
     By addButton_Brain_wo_w_contrast = By.xpath("//div[@class='Modal-content']" +
             "/div/section/div/button//div[@class='Modal-content']/div/section/div/button");
 
+    By markAsReadForReport = By.xpath("//button[text()='Mark as Ready For Reporting']");
+
+    By reportText = By.xpath("//div[contains(text(),'the reporting queue?')]");
+
+    By reportPopUp = By.xpath("//button[text()='Yes']");
+
+    By searchUser = By.xpath("//input[@placeholder='Search user']");
+
 
 
     @When("user clicks work list option on the side bar menu")
@@ -76,10 +84,11 @@ public class workList extends SetUp.base {
     public void userAssignsStudyToWhereRadiographerIsYetToBeAssignedForLastStudyUploaded(String arg0) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOfElementLocated(radiographerOption));
         driver.findElement(radiographerOption).click();
+        //js.executeScript("arguments[0].click();", radiographerOption);
         wait.until(ExpectedConditions.visibilityOfElementLocated(assignees));
         List<WebElement> assigneeNames = driver.findElements(assignees);
-        String val = driver.findElement(radiographerOption).getText();
-        Assert.assertEquals(val,"select user");
+        String val = driver.findElement(searchUser).getAttribute("placeholder");
+        Assert.assertEquals(val,"Search user");
         for (WebElement i : assigneeNames) {
             String q = i.getText();
             if (q.equalsIgnoreCase(arg0)) {
@@ -87,18 +96,17 @@ public class workList extends SetUp.base {
                 break;
             }
         }
-        Thread.sleep(500);
+        Thread.sleep(10000);
         String newAssigned = driver.findElement(radiographerOption).getText();
         Assert.assertEquals(newAssigned, arg0);
     }
-
 
     @When("user clicks the menu option to view a study details")
     public void userClicksTheMenuOptionToViewAStudyDetails() throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(studyMenuOption));
         WebElement menu = driver.findElement(studyMenuOption);
         Thread.sleep(5000);
-        js.executeScript("arguments[0].scrollIntoView()",menu);
+        //js.executeScript("arguments[0].scrollIntoView()",menu);
         Thread.sleep(3000);
         driver.findElement(studyMenuOption).click();
         wait.until(ExpectedConditions.elementToBeClickable(viewStudyoption));
@@ -120,7 +128,7 @@ public class workList extends SetUp.base {
     }
 
     @And("user provides update details as specified below")
-    public void userProvidesUpdateDetailsAsSpecifiedBelow(DataTable editDtls) {
+    public void userProvidesUpdateDetailsAsSpecifiedBelow(DataTable editDtls) throws InterruptedException {
         Map<String, String> dtls = editDtls.asMap(String.class, String.class);
 //        FullName
         wait.until(ExpectedConditions.visibilityOfElementLocated(fullName));
@@ -150,6 +158,7 @@ public class workList extends SetUp.base {
         wait.until(ExpectedConditions.visibilityOfElementLocated(description));
         driver.findElement(description).clear();
         driver.findElement(description).sendKeys(dtls.get("description"));
+        Thread.sleep(20000);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(modality));
         Select mdlty = new Select(driver.findElement(modality));
@@ -160,10 +169,11 @@ public class workList extends SetUp.base {
     public void userClicksTheSaveButton() {
         wait.until(ExpectedConditions.elementToBeClickable(saveButton));
         driver.findElement(saveButton).click();
+
     }
 
     @Then("System displays the success pop up successfully")
-    public void systemDisplaysTheSuccessPopUpSuccessfully() {
+    public void systemDisplaysTheSuccessPopUpSuccessfully() throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOfElementLocated(editStudySuccessPopUp));
         Assert.assertTrue(driver.findElement(editStudySuccessPopUp).isDisplayed());
     }
@@ -196,4 +206,23 @@ public class workList extends SetUp.base {
         wait.until(ExpectedConditions.visibilityOfElementLocated(addButton_Brain_wo_w_contrast));
         driver.findElement(addButton_Brain_wo_w_contrast).click();
     }
+
+    @And ("user clicks the Mark as Read Button")
+    public void userClickstheMarkAsReadButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(markAsReadForReport));
+        driver.findElement(markAsReadForReport).click();
+    }
+
+    @Then("System displays reporting queue popup")
+    public void system_displays_reporting_queue_popup() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(reportText));
+        Assert.assertTrue(driver.findElement(reportText).isDisplayed());
+    }
+
+    @Then("user clicks the Yes button")
+    public void user_clicks_the_yes_button() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(reportPopUp));
+        driver.findElement(reportPopUp).click();
+    }
+
 }

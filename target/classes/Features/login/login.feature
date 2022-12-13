@@ -1,7 +1,8 @@
-#@beSureToLogOut
+@Test
 Feature: GeneralLoginFeature
   This feature handles the positive and negative login functionality for all users
 
+  @TE001
   Scenario: Validate that user can not login Successfully with invalid credentials (wrong username, wrong password)
     Given user is on Xcel Website
     Then System displays Login page successfully
@@ -11,6 +12,7 @@ Feature: GeneralLoginFeature
     And User clicks the sign-in button
     Then System displays error notification
 
+  @TE002
   Scenario: Validate that user can not login Successfully with invalid credentials (correct username, wrong password)
     Given user is on Xcel Website
     Then System displays Login page successfully
@@ -20,6 +22,7 @@ Feature: GeneralLoginFeature
     And User clicks the sign-in button
     Then System displays error notification
 
+  @TE003
   Scenario: Validate that user can login as admin Successfully
     Given user is on Xcel Website
     Then System displays Login page successfully
@@ -34,6 +37,7 @@ Feature: GeneralLoginFeature
     And user clicks the logout button
     Then user is logged out successfully
 
+  @TE004
   Scenario: Validate that user can login as Radiologist Successfully
     Given user is on Xcel Website
     Then System displays Login page successfully
@@ -48,6 +52,7 @@ Feature: GeneralLoginFeature
     And user clicks the logout button
     Then user is logged out successfully
 
+  @TE005
   Scenario: Validate that user can login as Radiographer Successfully
     Given user is on Xcel Website
     Then System displays Login page successfully
