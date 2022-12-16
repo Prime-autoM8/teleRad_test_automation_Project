@@ -38,18 +38,24 @@ public class uploadStudy extends SetUp.base {
 
 
     By uploadTab = By.xpath("//button[contains(text(),'Upload') and @class='chakra-tabs__tab css-d0j1v1'][1]");
-    By zipUploadTab = By.xpath("//button[contains(text(),'Zip Upload') and @class='chakra-tabs__tab css-d0j1v1'][1]");
 
+    //By zipUploadTab = By.xpath("//button[contains(text(),'Zip Upload') and @class='chakra-tabs__tab css-d0j1v1'][1]");
+    By zipUploadTab = By.xpath("//button[contains(text(),'Zip Upload')]");
     By uploadPageTitle = By.xpath("//div[contains(text(),'Upload') and @class='TopNavigation--header_title']");
-    By zipUploadPageTitle = By.xpath("//div[contains(text(),'SFTP Upload') and @class='TopNavigation--header_title']");
+
+    //By zipUploadPageTitle = By.xpath("//div[contains(text(),'SFTP Upload') and @class='TopNavigation--header_title']");
+    By zipUploadPageTitle = By.xpath("//div[@class='TopNavigation--header_title']");
 
     By uploadButton = By.xpath("//div[2]/div/div/button[contains(text(),'Upload') and @type='button']");
     By fileUploadModal = By.xpath("//div[@class='App']/div[2]/div/div[3]/div/span[contains(text(),'click to browse')]");
-    By uploadFileLinkText = By.xpath("//div[@class='App']/div[2]/div/div[3]/div/span[contains(text(),'click to browse')]/input");
+    By uploadFileLinkText = By.xpath("(//div[@class='App']/div[2]/div/div[3]/div/span[contains(text(),'click to browse')])[1]");
+
     By uploadZipFileLink = By.xpath("//input[ @accept='.zip']");
 
     //    By uploadSuccesMessage =
-    By wrongFileFormatNotification = By.xpath("//div[contains(text(),'Kindly select a valid Dicom files') and @class='swal-text']");
+    //By wrongFileFormatNotification = By.xpath("//div[contains(text(),'Kindly select a valid Dicom files') and @class='swal-text']");
+
+    By wrongFileFormatNotification = By.xpath("//div[contains(text(),'Process failed, ensure you select a valid file and have the permission to perform this action') and @class='swal-text']");
     By lastEntryUploaded = By.xpath("//table/tbody/tr[1]/td/p");
     By lastUploadedPatientName = By.xpath("//table/tbody/tr[1]/td[3]/p");
     By uploadStatus1 = By.xpath("//table/tbody/tr[1]/td/div/div/div[contains(text(),'On Worklist')]");
@@ -126,9 +132,10 @@ public class uploadStudy extends SetUp.base {
     public void userUploadsFile(String filename) throws InterruptedException, AWTException {
         Thread.sleep(3000);
         String uploadableDoc = uploadableDocPath + filename;
-        driver.findElement(uploadFileLinkText).sendKeys(uploadableDoc);
-
+        driver.findElement(uploadFileLinkText).click();
+        fileUpload(uploadableDoc);
     }
+
 
     @When("User uploads zip file {string}")
     public void userUploadsZipFile(String filename) throws InterruptedException, AWTException {
@@ -140,11 +147,19 @@ public class uploadStudy extends SetUp.base {
 
     @Then("system displays wrong file format error notification")
     public void systemDisplaysWrongFileFormatErrorNotification() throws InterruptedException, AWTException {
-        Assert.assertTrue(driver.findElement(wrongFileFormatNotification).isDisplayed());
-        wait.until(ExpectedConditions.elementToBeClickable(cancelUploadWindow));
-        Thread.sleep(2000);
-        driver.findElement(cancelUploadWindow).click();
+        /*Thread.sleep(10000);
+        Alert alert = driver.switchTo().alert();
+        String alertText = alert.getText();
+        alert.dismiss();
+        boolean isErrorMsgDisplayed = alertText.contains("The file name is not valid");
+        Assert.assertTrue(isErrorMsgDisplayed);*/
 
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.findElement(wrongFileFormatNotification).isDisplayed());
+        //wait.until(ExpectedConditions.elementToBeClickable(cancelUploadWindow));
+        //Thread.sleep(2000);
+        //driver.findElement(cancelUploadWindow).click();
+        Thread.sleep(15000);
     }
 
     @Then("system uploads record successfully")
@@ -184,9 +199,16 @@ public class uploadStudy extends SetUp.base {
             uploadFlag = ("Duplicate Record Uploaded");
         } else if (("FALOUGHI-EKEZIE TONYE").contains(patientName) && upload_status == ("On Worklist")) {
 
-            uploadFlag = ("Record Uploaded Successfully");
+            uploadFlag = ("Upload completed!!");
         }
-        Assert.assertEquals(uploadFlag, "Record Uploaded Successfully");
+        //Assert.assertEquals(uploadFlag, "Record Uploaded Successfully");
+
+        Thread.sleep(15000);
+
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(uploadFlag));
+
+        Assert.assertEquals(uploadFlag, "Upload completed!!");
+
 
         Thread.sleep(5000);
 

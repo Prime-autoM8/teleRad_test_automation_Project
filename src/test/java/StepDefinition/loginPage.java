@@ -131,6 +131,7 @@ public class loginPage extends SetUp.base {
     public void SystemDisplaysTheBusinessSelectionPage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(businessOption));
         Assert.assertTrue(driver.findElement(businessOption).isDisplayed());
+
     }
 
     @When("user selects business")
