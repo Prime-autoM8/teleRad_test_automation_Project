@@ -1,0 +1,468 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2022-11-10T09:29:01.380Z",
+        "line": 4,
+        "name": "Validate that user can not login Successfully with invalid credentials (wrong username, wrong password)",
+        "description": "",
+        "id": "generalloginfeature;validate-that-user-can-not-login-successfully-with-invalid-credentials-(wrong-username--wrong-password)",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 25894846000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "user is on Xcel Website \"http://teleradfrontendstable.azurewebsites.net\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://teleradfrontendstable.azurewebsites.net\"",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.HomePage.user_is_on_qt_homes_website(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2375926000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "System displays Login page successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.systemDisplaysLoginPage()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3226658000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User provides invalid username and password",
+            "match": {
+              "location": "StepDefinition.HomePage.userProvidesInvalidUsernameAndPassword(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "wrongemail@parallelscore.com"
+                ]
+              },
+              {
+                "cells": [
+                  "password",
+                  "wrongpass"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1611948000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "User clicks the sign-in button",
+            "match": {
+              "location": "StepDefinition.HomePage.userClicksTheSignInButton()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1153983000,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "System displays error notification",
+            "match": {
+              "location": "StepDefinition.HomePage.systemDisplaysErrorNotification()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-11-10T09:29:35.755Z",
+        "line": 13,
+        "name": "Validate that user can not login Successfully with invalid credentials (correct username, wrong password)",
+        "description": "",
+        "id": "generalloginfeature;validate-that-user-can-not-login-successfully-with-invalid-credentials-(correct-username--wrong-password)",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2399822000,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "user is on Xcel Website \"http://teleradfrontendstable.azurewebsites.net\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://teleradfrontendstable.azurewebsites.net\"",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.HomePage.user_is_on_qt_homes_website(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2084031000,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "System displays Login page successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.systemDisplaysLoginPage()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 485235000,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "User provides invalid username and password",
+            "match": {
+              "location": "StepDefinition.HomePage.userProvidesInvalidUsernameAndPassword(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "benogunmefun@gmail.com"
+                ]
+              },
+              {
+                "cells": [
+                  "password",
+                  "wrongpass"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 179267000,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "User clicks the sign-in button",
+            "match": {
+              "location": "StepDefinition.HomePage.userClicksTheSignInButton()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3374440000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "System displays error notification",
+            "match": {
+              "location": "StepDefinition.HomePage.systemDisplaysErrorNotification()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-11-10T09:29:44.334Z",
+        "line": 23,
+        "name": "Validate that user can login as admin Successfully",
+        "description": "",
+        "id": "generalloginfeature;validate-that-user-can-login-as-admin-successfully",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 811469000,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "user is on Xcel Website \"http://teleradfrontendstable.azurewebsites.net\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://teleradfrontendstable.azurewebsites.net\"",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.HomePage.user_is_on_qt_homes_website(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2086232000,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "System displays Login page successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.systemDisplaysLoginPage()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 444859000,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "User provides valid username and password",
+            "match": {
+              "location": "StepDefinition.HomePage.userProvidesValidUsernameAndPassword(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "benogunmefun@gmail.com"
+                ]
+              },
+              {
+                "cells": [
+                  "password",
+                  "12345678"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 118062000,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "User clicks the sign-in button",
+            "match": {
+              "location": "StepDefinition.HomePage.userClicksTheSignInButton()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3226872000,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "System grants user access successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.System_grants_user_access_successfully()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-11-10T09:29:51.040Z",
+        "line": 33,
+        "name": "Validate that user can login as Radiologist Successfully",
+        "description": "",
+        "id": "generalloginfeature;validate-that-user-can-login-as-radiologist-successfully",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 930646000,
+              "status": "passed"
+            },
+            "line": 34,
+            "name": "user is on Xcel Website \"http://teleradfrontendstable.azurewebsites.net\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://teleradfrontendstable.azurewebsites.net\"",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.HomePage.user_is_on_qt_homes_website(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5267347000,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "System displays Login page successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.systemDisplaysLoginPage()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1056541000,
+              "status": "passed"
+            },
+            "line": 36,
+            "name": "User provides valid username and password",
+            "match": {
+              "location": "StepDefinition.HomePage.userProvidesValidUsernameAndPassword(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "nwokogodsfavour2@gmail.com"
+                ]
+              },
+              {
+                "cells": [
+                  "password",
+                  "12345678"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 287907000,
+              "status": "passed"
+            },
+            "line": 39,
+            "name": "User clicks the sign-in button",
+            "match": {
+              "location": "StepDefinition.HomePage.userClicksTheSignInButton()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3080912000,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "System grants user access successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.System_grants_user_access_successfully()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-11-10T09:30:01.678Z",
+        "line": 43,
+        "name": "Validate that user can login as Radiographer Successfully",
+        "description": "",
+        "id": "generalloginfeature;validate-that-user-can-login-as-radiographer-successfully",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 994836000,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "user is on Xcel Website \"http://teleradfrontendstable.azurewebsites.net\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://teleradfrontendstable.azurewebsites.net\"",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.HomePage.user_is_on_qt_homes_website(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5130183000,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "System displays Login page successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.systemDisplaysLoginPage()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 277257000,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "User provides valid username and password",
+            "match": {
+              "location": "StepDefinition.HomePage.userProvidesValidUsernameAndPassword(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "owolebir@gmail.com"
+                ]
+              },
+              {
+                "cells": [
+                  "password",
+                  "12345678"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 82519000,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "User clicks the sign-in button",
+            "match": {
+              "location": "StepDefinition.HomePage.userClicksTheSignInButton()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3080039000,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "System grants user access successfully",
+            "match": {
+              "location": "StepDefinition.HomePage.System_grants_user_access_successfully()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "GeneralLoginFeature",
+    "description": "  This feature handles the positive and negative login functionality for all users",
+    "id": "generalloginfeature",
+    "keyword": "Feature",
+    "uri": "file:src/main/resources/Features/Admin/admin_login.feature",
+    "tags": []
+  }
+]
